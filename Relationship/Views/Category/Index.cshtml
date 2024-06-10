@@ -1,0 +1,26 @@
+﻿@model List<Relationship.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories</h1>
+
+
+@foreach (var category in Model)
+{
+    <div class="fs-4 text-primary">
+        @category.Name
+
+        @if (category.Blogs != null && category.Blogs.Count > 0)
+        {
+            <ul>
+                @foreach (var blog in category.Blogs)
+                {
+                    <li class="text-dark">@blog.Title</li>
+
+                }
+            </ul>
+        }
+    </div>
+}

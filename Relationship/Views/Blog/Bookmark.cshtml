@@ -1,0 +1,28 @@
+﻿@model List<Relationship.Models.BlogUser>
+
+@{
+    ViewData["Title"] = "Bookmark";
+}
+
+<h5>Bookmark @Model.Count()</h5>
+
+<div class="row">
+    @foreach (var bookmark in @Model)
+    {
+        <div class="col-lg-3 mb-3">
+            <div class="card card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex gap-3">
+                        <div>@bookmark.Blog.Title</div>
+                        <div><small class="fw-medium small d-inline-block">( @bookmark.User.Name )</small></div>
+                    </div>
+                    <div>
+                        <a asp-action="BookmarkRemove" asp-asp-controller="Blog" asp-route-blogId="@bookmark.Blog.Id">
+                            <i class="fa-solid fa-xmark text-danger"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
